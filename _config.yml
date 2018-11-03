@@ -1,3 +1,4 @@
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
+remote_theme: "mmistakes/minimal-mistakes"
 title: toben's space
 description: This is a litte space of my own.
