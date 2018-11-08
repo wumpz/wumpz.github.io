@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "My start with github - pages"
 categories: [github-pages, jekyll]
 tags: [github-pages, jekyll]
