@@ -2,6 +2,8 @@
 title:  "My start with github - pages"
 categories: [github-pages, jekyll]
 tags: [github-pages, jekyll]
+header:
+  image: /assets/images/rocket_launch_2000.jpg
 ---
 
 # A journey begins
