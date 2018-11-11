@@ -28,8 +28,8 @@ Now all needed **Bundle** files are copied into your temp folder.
 
 3. the created directory **nb711_de_i10n** should be packed into a ZIP. (ca. 2MB)
 4. now you can adapt your branding module
-    1. copy **nb711_de_i10n.zip** to **src/resources**. Please make sure it is not under **main** or **test**. With this it will not be catched from mavens packager.
-    2. uncompress the ZIP - file in target folder while building
+  1. copy **nb711_de_i10n.zip** to **src/resources**. Please make sure it is not under **main** or **test**. With this it will not be catched from mavens packager.
+  2. uncompress the ZIP - file in target folder while building
 
 ```xml
 <plugin>
@@ -52,7 +52,7 @@ Now all needed **Bundle** files are copied into your temp folder.
 </plugin>
 ```
 
-    3. now let select the needed files and putting it into the jar using your nbm plugin
+  3. now let us select the needed files and putting it into the jar using your nbm plugin
 
 ```xml
 <plugin>
