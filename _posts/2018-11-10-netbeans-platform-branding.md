@@ -33,8 +33,8 @@ Now all needed **Bundle** files are copied into your temp folder.
 
 ```xml
 <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-antrun-plugin</artifactId>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-antrun-plugin</artifactId>
 	<executions>
 		<execution>
 			<phase>process-resources</phase>
@@ -43,8 +43,8 @@ Now all needed **Bundle** files are copied into your temp folder.
 			</goals>
 			<configuration>
 				<tasks>
-					<unzip src="src/resources/nb711_de_l10n.
-    zip" dest="target/l10n" overwrite="true"/>
+					<unzip src="src/resources/nb711_de_l10n.zip"
+            dest="target/l10n" overwrite="true"/>
 				</tasks>
 			</configuration>
 		</execution>
