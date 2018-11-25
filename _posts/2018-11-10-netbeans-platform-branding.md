@@ -35,20 +35,20 @@ Now all needed **Bundle** files are copied into your temp folder.
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-antrun-plugin</artifactId>
-	<executions>
-		<execution>
-			<phase>process-resources</phase>
-			<goals>
-				<goal>run</goal>
-			</goals>
-			<configuration>
-				<tasks>
-					<unzip src="src/resources/nb711_de_l10n.zip"
+  <executions>
+      <execution>
+            <phase>process-resources</phase>
+            <goals>
+                <goal>run</goal>
+            </goals>
+            <configuration>
+                <tasks>
+                    <unzip src="src/resources/nb711_de_l10n.zip"
             dest="target/l10n" overwrite="true"/>
-				</tasks>
-			</configuration>
-		</execution>
-	</executions>
+                </tasks>
+            </configuration>
+        </execution>
+    </executions>
 </plugin>
 ```
 
@@ -56,26 +56,26 @@ Now all needed **Bundle** files are copied into your temp folder.
 
 ```xml
 <plugin>
-	<groupId>org.codehaus.mojo</groupId>
-	<artifactId>nbm-maven-plugin</artifactId>
-	<configuration>
-		<nbmResources>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>nbm-maven-plugin</artifactId>
+    <configuration>
+        <nbmResources>
  <!-- platform data -->
-			<nbmResrouce>
-				<directory>target/l10n/nb711_de_i10n/platform</directory>
-				<includes>
-					<include>**/*_de.jar</include>
-				</includes>
-			</nbmResrouce>
+            <nbmResrouce>
+                <directory>target/l10n/nb711_de_i10n/platform</directory>
+                <includes>
+                    <include>**/*_de.jar</include>
+                </includes>
+            </nbmResrouce>
  <!-- ide data -->
-			<nbmResrouce>
-				<directory>target/l10n/nb711_de_i10n/ide</directory>
-				<includes>
-					<include>**/*project*_de.jar</include>
-					<include>**/*editor*_de.jar</include>
-				</includes>
-			</nbmResrouce>
-		</nbmResources>
-	</configuration>
+            <nbmResrouce>
+                <directory>target/l10n/nb711_de_i10n/ide</directory>
+                <includes>
+                    <include>**/*project*_de.jar</include>
+                    <include>**/*editor*_de.jar</include>
+                </includes>
+            </nbmResrouce>
+        </nbmResources>
+    </configuration>
 </plugin>
 ```
