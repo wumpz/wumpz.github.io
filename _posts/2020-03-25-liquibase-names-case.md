@@ -86,4 +86,7 @@ This simple implementation replaces the input streams with your own.
 Now the replacing stuff (fun part) starts ...
 
 ## rewrite names
+
+First of all. We love **regular expressions** ... :) 
+
 tbd
