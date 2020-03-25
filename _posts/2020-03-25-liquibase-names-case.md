@@ -4,6 +4,18 @@ categories: [java]
 tags: [java, liquibase]
 ---
 
+# Liquibase start
+
+To build up a database from changelogs using Java one could use the following simple code block:
+
+    Liquibase liquibase = new Liquibase(changelogFileName,
+                new ClassLoaderResourceAccessor(),
+                new DerbyConnection(con));
+    liquibase.update("");
+    
+`con` is a simple JDBC database connection. `ClassLoaderResourceAccessor` loads changelogs via class resource loader. 
+Therefore you are able to use changelogs from within a JAR file.
+
 # The Problem
 
 Since liquibase does not change column names in any case.
@@ -12,7 +24,7 @@ usages of exactly the same column or table or if you want to pump a changelog fr
 maybe Oracle. Postgresqls standard nameing is lower case while Oracle uses upper case. Without any
 changes you have to escape all your object names:
 
-    select "mycol" from "mytable" where "mycol" like '...'
+    select "mycol" from "mytable" where "mycol" like '...'  
     
 # The solution (part 1) 
 
@@ -44,7 +56,34 @@ This solution is a two part thing.
 2. Then we need to process the InputStream data to rewrite all names with there upper / lower case pendant.
 
 ## access InputStream
-tbd 
+The `ResourceAccessor` provides the needed method: `getResourcesAsStream`. Here you could replace the returned 
+data stream by your own. Liquibase uses the same class and method to get its own resoures, e.g. schema files.
+So you have to check the path for your data. 
+
+With the use of **apache.commons** you could easily read the data streams into a string process it and construct a new 
+data stream from that. I know one could improve the memory consumption, but this works well for nearly all *normal* changelogs. 
+
+    @Override
+    public Set<InputStream> getResourcesAsStream(String path) throws IOException {
+        Set<InputStream> resourcesAsStream = super.getResourcesAsStream(path);
+        //since internal schema files are read with this as well, we need to 
+        //skip to process those.
+        if (!path.startsWith("databases/")) {
+            return resourcesAsStream;
+        }
+
+        Set<InputStream> corrected = new HashSet<>();
+        for (InputStream is : resourcesAsStream) {
+            String txt = IOUtils.toString(is, StandardCharsets.UTF_8.name());
+            is.close();
+            corrected.add(new ByteArrayInputStream(txt.getBytes(StandardCharsets.UTF_8)));
+        }
+        return corrected;
+    }
+
+This simple implementation replaces the input streams with your own. 
+
+Now the replacing stuff (fun part) starts ...
 
 ## rewrite names
 tbd
