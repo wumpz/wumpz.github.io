@@ -38,4 +38,13 @@ and your character case is wrong.
     
 # The solution (part 2) - rewrite changelogs 
 
+This solution is a two part thing. 
+
+1. First of all we need to access the InputStream to Liquibase somehow. 
+2. Then we need to process the InputStream data to rewrite all names with there upper / lower case pendant.
+
+## access InputStream
+tbd 
+
+## rewrite names
 tbd
