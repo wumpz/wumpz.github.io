@@ -4,6 +4,7 @@ categories: [github-pages, jekyll]
 tags: [github-pages, jekyll]
 header:
   image: /assets/images/rocket_launch_2000.jpg
+classes: wide
 ---
 
 # A journey begins
