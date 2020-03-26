@@ -2,6 +2,7 @@
 title:  "the mysterious split"
 categories: [java]
 tags: [java, split]
+classes: wide
 ---
 
 # Splitting with empty parts
