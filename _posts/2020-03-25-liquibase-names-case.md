@@ -2,6 +2,7 @@
 title:  "liquibase and the table / column name case"
 categories: [java]
 tags: [java, liquibase, regular expressions, matcher]
+classes: wide
 ---
 
 # Liquibase start
