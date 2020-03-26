@@ -89,4 +89,27 @@ Now the replacing stuff (fun part) starts ...
 
 First of all. We love **regular expressions** ... :) 
 
-tbd
+We have the complete changelog in a string. If you look into a changelog, you will see, that you have to replace 
+all expressions like 
+
+    tableName="table"
+    name="column"
+    
+and so on. So how to find this. 
+
+The first try would result in something like:
+
+    (?i)name="([^"]+)"
+    
+Keeping in mind we want the quoted name to be upper / lower case we want the
+regular expression to only return those but we want only those that are preceded by this **name** thing. I am
+sure you know about positive lookbehind in regular expressions. So the second one is better:
+
+    (?i)(?<=name=)("[^"]*")
+
+Now we know how to select the right places. But how to replace those with a processed group value. The `replaceAll` methods only
+support referencing the group value itself, but only without any processing. 
+
+It appears that the regular expression matcher of java has a solution for this.
+
+TBD
