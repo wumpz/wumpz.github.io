@@ -125,4 +125,17 @@ support referencing the group value itself, but only without any processing.
 
 It appears that the regular expression matcher of java has a solution for this.
 
-TBD
+```java
+Pattern pattern = Pattern.compile("(?i)(?<=name=)(\"[^\"]*\")");
+Matcher matcher = pattern.matcher( changelogTxt );
+
+StringBuffer buf = new StringBuffer();  // unfortunately this appending stuff does not support StringBuilder
+
+while ( matcher.find() ) {
+    matcher.appendReplacement(buf, matcher.group(1).toUpperCase());
+}
+
+matcher.appendTail(buf);
+```
+
+So from our original text the interesting parts are replaced while building up a new string in the `StringBuffer`.
