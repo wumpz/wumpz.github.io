@@ -4,6 +4,7 @@ categories: [docker, systemd]
 tags: [docker, systemd]
 #header:
 #  image: /assets/images/rocket_launch_2000.jpg
+classes: wide
 ---
 
 # Docker
