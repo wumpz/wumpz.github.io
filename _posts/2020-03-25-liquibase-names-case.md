@@ -8,10 +8,12 @@ tags: [java, liquibase]
 
 To build up a database from changelogs using Java one could use the following simple code block:
 
-    Liquibase liquibase = new Liquibase(changelogFileName,
-                new ClassLoaderResourceAccessor(),
-                new DerbyConnection(con));
-    liquibase.update("");
+```java
+Liquibase liquibase = new Liquibase(changelogFileName,
+            new ClassLoaderResourceAccessor(),
+            new DerbyConnection(con));
+liquibase.update("");
+```
     
 `con` is a simple JDBC database connection. `ClassLoaderResourceAccessor` loads changelogs via class resource loader. 
 Therefore you are able to use changelogs from within a JAR file.
