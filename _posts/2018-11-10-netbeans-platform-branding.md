@@ -4,6 +4,7 @@ categories: [netbeans platform]
 tags: [netbeans platform]
 header:
   image: /assets/images/rocket_launch_2000.jpg
+classes: wide
 ---
 
 # Localization of Modules
