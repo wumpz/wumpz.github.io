@@ -1,7 +1,7 @@
 ---
 title:  "liquibase and the table / column name case"
 categories: [java]
-tags: [java, liquibase]
+tags: [java, liquibase, regular expressions, matcher]
 ---
 
 # Liquibase start
