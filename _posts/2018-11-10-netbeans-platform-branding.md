@@ -1,5 +1,5 @@
 ---
-title:  "Netbeans - Platform - Localization - Maven"
+title:  "Netbeans V7.x - Platform - Localization - Maven"
 categories: [netbeans platform]
 tags: [netbeans platform]
 header:
@@ -17,7 +17,7 @@ Foreign modules are localizable using a **branding-project**. Here a list of all
 
 From netbeans websites you can download the complete localization data for the whole **platform**. (**nb71_platform_l10n.zip** you will find by google). This file is to include into your **pom.xml**.
 
-# Workflow to lokalize of all modules of a maven project
+# Workflow to localize of all modules of a maven project
 
 1. download the needed localized distribution **Netbeans**.
 2. extract your needed localization data using the following script for windows:
