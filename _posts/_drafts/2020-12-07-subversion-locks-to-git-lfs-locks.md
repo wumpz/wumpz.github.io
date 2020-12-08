@@ -59,8 +59,39 @@ To activate the locking you have to configure the tracking like
 git lfs track "*.avi" --lockable
 ```
 
-now the configuration looks liked
+now the configuration in **.gitattributes** looks like
 
 ```bash
 *.avi filter=lfs diff=lfs merge=lfs -text lockable
 ```
+
+> Note: Only after a complete checkout or a new clone of your repository from your server all **lockable** files are set read only.
+
+# Migrate the whole history of Subversion to Git lfs
+
+```bash
+# dry run of your migration
+git lfs migrate info --everything --include="*.avi,*.jpg"
+
+# perform migration
+git lfs migrate import --everything --include="*.avi,*.jpg" --verbose
+```
+We want to do it right. So the complete history goes into Git including author correction metadata and stuff. With the first command you could check, what Git LFS will change and with the second the change is actually done.
+
+# First Conclusion
+
+As simple as this, the configured system worked as expected. Locks are treated globally, if all users use the same server.
+
+So problem solved ...
+
+# The problem of repository size
+
+So all seemed fine til we looked at the repository sizes. Our **700MB Subversion** repository was inflated to nearly **12GB in Git LFS**.  After some investigation it turned out, that this has to do with the way Git LFS stores the tracked files. You have to now, that there is no more diff processing in place like in normal Git. So every version of our binary files has a copy of its own.
+
+Our binary files were not so big, but have a lot of changes and therefore result in a lot of stored versions in Git LFS.
+
+# Conclusion
+
+Test the repository with your files.
+Git LFS is for really large files that should be stored elsewhere.
+Git LFS File Locking could be used without storage.
