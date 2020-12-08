@@ -90,8 +90,11 @@ So all seemed fine til we looked at the repository sizes. Our **700MB Subversion
 
 Our binary files were not so big, but have a lot of changes and therefore result in a lot of stored versions in Git LFS.
 
+# Solution
+
 # Conclusion
 
 Test the repository with your files.
 Git LFS is for really large files that should be stored elsewhere.
 Git LFS File Locking could be used without storage.
+For file of size some meg bytes the diff storage works really fine.
