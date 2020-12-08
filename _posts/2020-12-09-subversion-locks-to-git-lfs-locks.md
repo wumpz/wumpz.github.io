@@ -67,7 +67,7 @@ now the configuration in **.gitattributes** looks like
 
 > Note: Only after a complete checkout or a new clone of your repository from your server all **lockable** files are set read only.
 
-# Migrate the whole history of Subversion to Git lfs
+# Migrate the whole history of Subversion to Git LFS
 
 We want to do it right. So the complete history goes into Git including author correction metadata and stuff. I will skip the commands and configuration around `git svn clone` here. After this transfer completes you transform your repository using the following commands:
 
@@ -79,6 +79,24 @@ git lfs migrate info --everything --include="*.avi,*.jpg"
 git lfs migrate import --everything --include="*.avi,*.jpg" --verbose
 ```
 With the first command you could check, what Git LFS will change and with the second the change is actually done. The complete history is rewritten and all files matching our include filter are replaced by Git LFS and stored elsewhere.
+
+# Using locks in Git LFS
+
+There are several Git commands to use this locking techniques.
+
+```bash
+# to lock a file
+git lfs lock movie.avi
+
+# to unlock a file
+git lfs unlock movie.avi
+
+# to list all locks of your repository
+git lfs locks
+```
+
+There are also some tools good tools that provide this locking technique, for instance **TortoiseGIT**. Some tools support using Git LFS but does not support those locking commands. So in these cases you have to use the command line.
+
 
 # First Conclusion
 
