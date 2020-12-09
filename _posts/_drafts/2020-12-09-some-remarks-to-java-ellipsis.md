@@ -33,6 +33,8 @@ Those three dots indicate, that the caller could put an arbitrary number of argu
 
 Inernally an array is here used as well. Within your method you process this parameter like a normal array.
 
+> Note: The VarArg parameter must be the last parameter of a method. There can only be one VarArg parameter.
+
 # Processing a VarArg parameter
 
 Within your method you have access to normal array methods, like *length* and normal value access via index.
@@ -61,3 +63,5 @@ multiParamVarArg(new String[]{"param1", "param2"});   // args.length == 2;
 //this one is a problem
 multiParamVarArg((String[]) null)  ;   // args == null;
 ```
+
+So be very careful using this later **array** type of setting the VarArg. Then you have to do all those nice null checks, we all love to do :).
