@@ -27,3 +27,27 @@ public class TestEllipsis {
     }
 }
 ```
+
+```
+voll --> 
+2
+1
+2
+done
+ohne --> 
+0
+done
+null --> 
+2
+a
+b
+done
+null --> 
+1
+null
+done
+null --> 
+Exception in thread "main" java.lang.NullPointerException
+	at org.tw.ellipsis.TestEllipsis.testMethod(TestEllipsis.java:25)
+	at org.tw.ellipsis.TestEllipsis.main(TestEllipsis.java:20)
+```
