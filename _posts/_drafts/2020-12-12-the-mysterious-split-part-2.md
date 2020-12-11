@@ -20,7 +20,7 @@ But what if you want to return the delimiters as well. Now we have to use some m
 ## return delimiters separately
 
 For this staring string we could use **\b** as the regular expression. This matches word boundaries. So you are able to split our original string between the characters and the **/**.
-
+ 
 ```java
 "a/b/c".split("\\b")
 ```
