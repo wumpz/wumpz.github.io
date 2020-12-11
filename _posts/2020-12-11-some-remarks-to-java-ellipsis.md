@@ -33,7 +33,7 @@ Those three dots indicate, that the caller could put an arbitrary number of argu
 
 Inernally an array is here used as well. Within your method you process this parameter like a normal array.
 
-> Note: The VarArg parameter must be the last parameter of a method. There can only be one VarArg parameter.
+> Note: The VarArg parameter must be the last parameter of a method. There can only be one VarArg parameter per method.
 
 # Processing a VarArg parameter
 
