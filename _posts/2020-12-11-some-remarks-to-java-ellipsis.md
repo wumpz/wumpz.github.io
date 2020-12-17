@@ -5,8 +5,6 @@ tags: [java, ellipsis, varargs]
 classes: wide
 ---
 
-# Java VarArgs
-
 To support an arbitrary number of arguments of one type for a method you have basically only one option, you have to create an array.
 
 ```java
