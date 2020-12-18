@@ -19,4 +19,4 @@ after_success:
 
 This builds my maven project with Java 8 and Java 11 and after a success it cleans it all up again.
 
-So I have heard of GitHub Actions and wanted to give it a try. Since GitHub is a nice place I would prefer, to keep all stuff on one place.
+So I have heard of GitHub Actions and wanted to give it a try. Since GitHub is a nice place I would prefer, to keep all stuff on one place. The target is to do the same like with this **TravisCI** script.
