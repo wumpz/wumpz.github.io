@@ -96,3 +96,16 @@ MATCH (my:Java:Class {name:'SolutionInformation'})
 OPTIONAL MATCH (p:Java)<-[:DEPENDS_ON]-(my)
 RETURN my, p
 ```
+
+
+reseting the color of my assignments
+
+```sql
+:style reset
+```
+
+virtual nodes and relations
+
+https://neo4j.com/labs/apoc/4.1/virtual/
+
+Some commands create nodes and relationships but you only want to display this stuff. Thats for you.
