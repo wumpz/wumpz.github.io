@@ -109,3 +109,49 @@ virtual nodes and relations
 https://neo4j.com/labs/apoc/4.1/virtual/
 
 Some commands create nodes and relationships but you only want to display this stuff. Thats for you.
+
+dashboard is a very good start
+
+```xml
+<plugin>
+                <groupId>com.buschmais.jqassistant</groupId>
+                <artifactId>jqassistant-maven-plugin</artifactId>
+                <version>1.9.0</version>
+                <configuration>
+                    <storeLifecycle>MODULE</storeLifecycle>
+                    <scanIncludes>
+                        <scanInclude>
+                            <path>${project.basedir}/.git</path>
+                        </scanInclude>
+                    </scanIncludes>
+                    <groups>
+                        <group>jqassistant-dashboard:Default</group>
+                        <!-- Insert your own group references here -->
+                    </groups>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>scan</goal>
+                            <goal>analyze</goal>
+                        </goals>
+                        <configuration>
+                            <warnOnSeverity>MINOR</warnOnSeverity>
+                            <failOnSeverity>MAJOR</failOnSeverity>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.kontext-e.jqassistant.plugin</groupId>
+                        <artifactId>jqassistant.plugin.git</artifactId>
+                        <version>1.8.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jqassistant.contrib.plugin</groupId>
+                        <artifactId>jqassistant-dashboard-plugin</artifactId>
+                        <version>1.9.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+```
