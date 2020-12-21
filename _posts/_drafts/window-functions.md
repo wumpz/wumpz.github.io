@@ -29,7 +29,7 @@ Lets come from the other side. Why are these functions called windows functions?
 
 ![Window Function Structure](assets/window-function-structure.png)
 
-You see in this picture the data rows of your **select** or **table**. Using the **partition by** clause you are able to split your data rows into partitions, sets, groups, you name it. But thats not all. The last but most important thing is the window, the range or the look at this partition, that selects a part of this partition dependent of the current row you are in, that is used to feed the **window_function**. This last part (IMHO) is the thing that gave those window functions its name. This range could be but doesn't need to be the whole partition. You are able to configure this window, there are meaningfull default definitions of it.
+You see in this picture the data rows of your **select** or **table**. Using the **partition by** clause you are able to split your data rows into partitions, sets, groups, you name it. But thats not all. The last but most important thing is the window, the range or the look at this partition, that selects a part of this partition dependent of the current row (see the array to the dot) you are in, that is used to feed the **window_function**. This last part (IMHO) is the thing that gave those window functions its name. This range could be but doesn't need to be the whole partition. You are able to configure this window, there are meaningfull default definitions of it.
 
 
 
