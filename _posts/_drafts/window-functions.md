@@ -5,10 +5,32 @@ tags: [sql, window, function]
 classes: wide
 ---
 
-Anmerkungen
-Vergleich zu group by
-z.B. max, avg
-erst ausgewertet nach dem where (only selected rows are visible)
+Since I use SQLs window function nearly on a daily basis. So there are a lot of introductions to this useful functionalty, that never got to the point IMHO. So I will try it better :). 
+
+# Syntax
+
+```sql
+window_function (expression) OVER (
+   [ PARTITION BY expr_list ]
+   [ ORDER BY order_list ][ frame_clause ] ) 
+```
+
+> Note: a window function may only used in the **select** part of your statement and not in the other parts like **where**. It will evaluated **after** the your query has collected all rows, meaning, that every filter process, **where** expression and so on is finished.
+
+```sql
+select sum(my_value) over () from my_table
+```
+
+# Window Functions
+
+As **window_function** (look at syntax) you can use some expressions, you already know from aggregate functions, like **sum, avg, min, max, ...**. And the **partition by** seems to somehow grouping your data. I think that is the reason, why the first understanding of window functions often is like: it is some kind of **group by** expression. This way of thinking prevents the real understanding of what these expressions really are. 
+
+Lets come from the other side. Why are these functions called windows functions? 
+
+![Window Function Structure](assets/window-function-structure.png)
+
+You see in this picture the data rows of your **select** or **table**. Using the **partition by** clause you are able to split your data rows into partitions, sets, groups, you name it. But thats not all. The last but most important thing is the window, the range or the look at this partition, that selects a part of this partition dependent of the current row you are in, that is used to feed the **window_function**. This last part (IMHO) is the thing that gave those window functions its name. This range could be but doesn't need to be the whole partition. You are able to configure this window, there are meaningfull default definitions of it.
+
 
 
 -- group by
@@ -19,12 +41,7 @@ erst ausgewertet nach dem where (only selected rows are visible)
 
 
 
-Syntax
-window_function (expression) OVER (
-   [ PARTITION BY expr_list ]
-   [ ORDER BY order_list ][ frame_clause ] ) 
 
-![Window Function Structure](assets/window-function-structure.png)
  
 Bsp with partition only
 

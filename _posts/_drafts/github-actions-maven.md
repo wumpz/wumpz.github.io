@@ -5,7 +5,7 @@ tags: [java, maven, github, actions]
 classes: wide
 ---
 
-Since I maintain some OpenSource projects its important to know the projects state. Those projects are using Maven. So a simple local build and test is an easy task. However, the state should be visible right from the projects main page. So at the moment I use **TravisCI** to build my projects and from it I derive some nice build - badges, to show the state and the build result. I am no **TravisCI** export, I just use it with this simple script:
+Since I maintain some OpenSource projects its important to know the projects state. Those projects are using Maven. So a simple local build and test is an easy task. However, the state should be visible right from the projects main page. So at the moment I use **TravisCI** to build my projects and from it I derive some nice build - badges, to show the state and the build result. I am no **TravisCI** expert, I just use it with this simple script:
 
 ```yaml
 language: java
