@@ -57,3 +57,42 @@ classes: wide
 
 * profile
 * requests on codebase
+
+* request a class
+
+```sql
+MATCH (my:Java:Class {name:'SolutionInformation'})
+RETURN my
+```
+
+```sql
+MATCH (my:Java:Class)
+WHERE my.name='SolutionInformation'
+RETURN my
+```
+
+
+* class and its children
+
+```sql
+MATCH (p:Java)<-[:DEPENDS_ON]-(my:Java:Class)
+WHERE my.name='SolutionInformation'
+RETURN p
+```
+
+does not print the class itself
+
+```sql
+MATCH (my:Java:Class)
+WHERE my.name='SolutionInformation'
+OPTIONAL MATCH (p:Java)<-[:DEPENDS_ON]-(my)
+RETURN my, p
+```
+
+so optional match seems to be something like a left join
+
+```sql
+MATCH (my:Java:Class {name:'SolutionInformation'})
+OPTIONAL MATCH (p:Java)<-[:DEPENDS_ON]-(my)
+RETURN my, p
+```
