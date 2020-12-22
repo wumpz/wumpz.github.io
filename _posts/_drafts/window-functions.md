@@ -95,7 +95,16 @@ SELECT id, SUM( id ) OVER ( PARTITION BY numvalue ORDER BY id ) AS my_running_su
 |4|1|7|
 |5|1|12|
 
-sum (but with order by)
+# Windows Functions
+
+There is a huge set, dependent of the database system you are running on, which function you can use as **window_function**. Here is a subset of those:
+
+window function|**order by** needed|description
+---------------|-------------------|--------------------
+avg | no | 
+count | no, but possible | 
+
+
 avg
 count
 Bsp with order by:
