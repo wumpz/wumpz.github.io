@@ -29,25 +29,15 @@ Lets come from the other side. Why are these functions called windows functions?
 
 ![Window Function Structure](assets/window-function-structure.png)
 
-You see in this picture the data rows of your **select** or **table**. Using the **partition by** clause you are able to split your data rows into partitions, sets, groups, you name it. But thats not all. The last but most important thing is the window, the range or the look at this partition, that selects a part of this partition dependent of the current row (see the array to the dot) you are in, that is used to feed the **window_function**. This last part (IMHO) is the thing that gave those window functions its name. This range could be but doesn't need to be the whole partition. You are able to configure this window, there are meaningfull default definitions of it.
+You see in this picture the data rows of your **select** or **table**. Using the **partition by** clause you are able to split your data rows into partitions, sets, groups, you name it. But thats not all. The last but most important thing is the window, the frame or the look at this partition, that selects a part of this partition dependent of the current row (see the array to the dot) you are in, that is used to feed the **window_function**. This last part (IMHO) is the thing that gave those window functions its name. This range could be but doesn't need to be the whole partition. You are able to configure this window, but there are meaningfull default definitions of it.
 
-
-
--- group by
-
-
- 
--- window function
-
-
-
-
- 
-Bsp with partition only
-
+# with **partition by** only 
 
 max
 min
+
+# with additional **order by**
+
 sum (but with order by)
 avg
 count
@@ -60,6 +50,8 @@ Bsp with order by (access to other rows)
 lead, lag (expr, [ offset, [ defaultvalue ] ]) 
 vorher / nachher in drei Datenbanken
 first_value, last_value, 
+
+# with a **frame** definition
 range definitions or frame definitions
 rows
 rows between unbounded preceding and unbounded following (alle)
