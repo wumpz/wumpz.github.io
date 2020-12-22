@@ -31,12 +31,69 @@ Lets come from the other side. Why are these functions called windows functions?
 
 You see in this picture the data rows of your **select** or **table**. Using the **partition by** clause you are able to split your data rows into partitions, sets, groups, you name it. But thats not all. The last but most important thing is the window, the frame or the look at this partition, that selects a part of this partition dependent of the current row (see the array to the dot) you are in, that is used to feed the **window_function**. This last part (IMHO) is the thing that gave those window functions its name. This range could be but doesn't need to be the whole partition. You are able to configure this window, but there are meaningfull default definitions of it.
 
+# complete table processing
+
+Let this be our little test table **test_table**.
+
+|id|numvalue|
+|--|----:|
+|1|2|
+|2|2|
+|3|1|
+|4|1|
+|5|1|
+
+
+Then this delivers the complete **sum** of **value** column but not in one row, instead of for each row of **mytable** the **sum** is delivered. 
+
+```sql
+SELECT id, sum(numvalue) OVER () AS mysum FROM mytable
+```
+
+And unlike **group by** aggregate expressions the result is not compressed.
+
+|id|mysum|
+|--|----:|
+|1|7|
+|2|7|
+|3|7|
+|4|7|
+|5|7|
+
+
 # with **partition by** only 
 
-max
-min
+Now lets begin to partition our table **test_table**. For each distinct value of **numvalue** we want to **return** the maximum of **id**.
+
+```sql
+SELECT id, numvalue, MAX( id ) OVER ( PARTITION BY numvalue ) AS mymax FROM mytable
+```
+
+|id|numvalue|mymax|
+|--|----:|-----:|
+|1|**2**|2|
+|2|**2**|2|
+|3|1|5|
+|4|1|5|
+|5|1|5|
+
+> Note: Without any further configuration the window function processes each row for every partition. Therefore the range is always to complete partition.
 
 # with additional **order by**
+
+Now the fun starts. Using an **order by** the window range within a partition is per default from the first row of the partition to the actual row regarding to the defined ordering. Now the **sum** delivers something completly different: it is a running sum. This is possible due to the ordering of the rows of a partition.
+
+```sql
+SELECT id, SUM( id ) OVER ( PARTITION BY numvalue ORDER BY id ) AS my_running_sum FROM mytable
+```
+
+|id|numvalue|my_running_sum|
+|--|----:|-----:|
+|1|**2**|1|
+|2|**2**|3|
+|3|1|3|
+|4|1|7|
+|5|1|12|
 
 sum (but with order by)
 avg
