@@ -35,13 +35,13 @@ You see in this picture the data rows of your **select** or **table**. Using the
 
 Let this be our little test table **test_table**.
 
-|id|numvalue|
-|--|----:|
-|1|2|
-|2|2|
-|3|1|
-|4|1|
-|5|1|
+|id|numvalue|charvalue|
+|--|:----:|:------:|
+|1|2|C
+|2|2|B
+|3|1|A
+|4|1|E
+|5|1|G
 
 
 Then this delivers the complete **sum** of **value** column but not in one row, instead of for each row of **mytable** the **sum** is delivered. 
@@ -105,26 +105,104 @@ avg | no | average value of a numeric column
 row_number | yes | every row of the range of the partition is assigned with a sequential integer
 count | no, but possible | Number of rows of the range in our partition. Since for non null values this seems to do the same thing like **row_number**, but use the function with the best fitting name.
 sum | no, but possible | sum of numeric values of your partition in whole or a running sum
+
+The list is long.
   
 ## numbering rows
 
-row_number
-rank, dense_rank (equal values -> equal rank) (Rang von Dingen, siehe Siegertreppchen)
+Now we want each row numbered and starting each partition with **1**. The **order by** defines the order of this sequential numbering.
+
+```sql
+SELECT numvalue, charvalue, row_number() OVER ( PARTITION BY numvalue ORDER BY charvalue ) AS rownum FROM mytable
+```
+
+|numvalue|charvalue|rownum
+|:----:|:------:|:--:
+|2|C|**2**
+|2|B|**1**
+|1|A|**1**
+|1|E|**2**
+|1|G|**3**
+
+> Note: Just to make it clear: this **order by** does not reordering the output. But every of this numbering window functions need an **order by**.
+
+The following functions are kind of numbering the rows with some slight but important differences.
+
+window function|description
+---------------|-------------------|--------------------
+rank | number the rows sequentially, but assigning equal numbers to equal values of the **order by** value. The next different value gets the value **row_number** would assign to it. Therefore you have a jump in those numbers.
+dense_rank | Numbers the rows like **rank** but the next different value gets the next higher number. Therefore the numbering here is sequential.
+
 
 ## access to non actual row values
 
-lead, lag (expr, [ offset, [ defaultvalue ] ]) 
-vorher / nachher in drei Datenbanken
-first_value, last_value, 
+There are window functions to access a value of your partition. Keep in mind that using this you have to provide a **order by** and therefore the range per default from the first row of the partition to the actual row. Lets start with **first_value** and **last_value**.
+
+> Note: The returned value does not need to be one of the partition or ordering definition.
+
+```sql
+select id, numvalue, charvalue, 
+first_value(id) over (partition by numvalue order by charvalue) first_value_expr,
+last_value(id) over (partition by numvalue order by charvalue) last_value_expr
+from mytable
+``` 
+
+|id|numvalue|charvalue|first_value_expr|last_value_expr
+|--|:----:|:------:|:----:|:---:|
+|1|2|C|2|1
+|2|2|B|2|2
+|3|1|A|3|3
+|4|1|E|3|4
+|5|1|G|3|5
+
+This **strange** behaviour of the **last_value** can easily explained by the used range within the partition: **first row to actual row**.
+
+Now two methods that do not seem to use the standard range definition as a default. But  the complete partition data.
+
+window function|description
+---------------|-------------------|--------------------
+lag | Reads a value from a **previous row**. You define the relative offset. 
+lead | Reads a value from a **following row**. You define the relative offset.
+
+```sql
+select id, 
+lag(id,1) over (order by id) lag_expr,
+lead(id,1) over (order by id) lead_expr
+from mytable
+order by id
+```
+
+|id|lag_expr|lead_expr
+|--|:----:|:------:
+|1|null|2
+|2|1|3
+|3|2|4
+|4|3|5
+|5|4|null
+
 
 # with a **frame** definition
 
-With the last examples it became somewhat clear, why the frame itself should be configurable as well.
- 
-range definitions or frame definitions
-rows
-rows between unbounded preceding and unbounded following (alle)
-rows between unbounded preceding and current row (std für order by)
-rows between 2 preceding and 2 following
-range
-same as rows but only with values
+With the last examples it became somewhat clear, why the frame itself should be configurable as well. To define this range a quite complex sql construct is used. 
+
+You can e.g. here (https://www.postgresql.org/docs/12/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS) read Postgresql definition. 
+
+With this you can for instance configure your **sum** window function in a form, that it calculates the **sum** from the actual row and the two preceding rows and not from the complete partition. 
+
+```sql
+select id, 
+sum(id) over () sum_expr,
+sum(id) over (order by id rows between 2 preceding and current row) sum_expr_with_range
+from mytable
+order by id
+```
+
+|id|sum_expr|sum_expr_with_range
+|--|:----:|:------:
+|1|15|1
+|2|15|3
+|3|15|6
+|4|15|9
+|5|15|12
+
+In **sum_expr** is the normal complete partition **sum** result. In **sum_expr_with_range** there is the sum from the actual rows value the the two values before. For **id = 4** this calculates **2 + 3 + 4 = 9**.
