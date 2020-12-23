@@ -23,7 +23,7 @@ So I have heard of GitHub Actions and wanted to give it a try. Since GitHub is a
 
 # The simple start 
 
-GitHub provides a very simple way to start. You could follow it here for maven: https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-java-with-maven. 
+GitHub provides a very simple way to start. You could follow it here for maven: (https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-java-with-maven). 
 
 Or just use the **Action** menu of your GitHub repository and click **Setup this workflow** for **Java with Maven**. This will generate this workflow script for you:
 
@@ -120,7 +120,7 @@ jobs:
       run: mvn -B package --file pom.xml
 ```
 
-You see this new section **strategy**. There are our Java versions definied: 8 and 11. Within the steps we can now use the actual value using this kind of macro **${{ matrix.java }}**.
+You see this new section **strategy**. There are our Java versions definied: 8 and 11. Within the steps we can now use the actual value using this kind of macro **`${{ matrix.java }}`**.
 
 # Conclusion
 
