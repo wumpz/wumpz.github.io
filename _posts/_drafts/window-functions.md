@@ -97,22 +97,21 @@ SELECT id, SUM( id ) OVER ( PARTITION BY numvalue ORDER BY id ) AS my_running_su
 
 # Windows Functions
 
-There is a huge set, dependent of the database system you are running on, which function you can use as **window_function**. Here is a subset of those:
+There is a huge set, dependent of the database system you are running on, which function you can use as **window_function**. Here is a subset of those. For the exact specification you should use your database vendors sql specification.
 
 window function|**order by** needed|description
 ---------------|-------------------|--------------------
-avg | no | 
-count | no, but possible | 
+avg | no | average value of a numeric column
+row_number | yes | every row of the range of the partition is assigned with a sequential integer
+count | no, but possible | Number of rows of the range in our partition. Since for non null values this seems to do the same thing like **row_number**, but use the function with the best fitting name.
+sum | no, but possible | sum of numeric values of your partition in whole or a running sum
   
 
-avg
-count
-Bsp with order by:
-row_number, (Rechnungspositionen)
+
 rank, dense_rank (equal values -> equal rank) (Rang von Dingen, siehe Siegertreppchen)
-sum (again with order running sum) 
+
 Laufende Summen in drei Datenbanken
-Bsp with order by (access to other rows)
+
 lead, lag (expr, [ offset, [ defaultvalue ] ]) 
 vorher / nachher in drei Datenbanken
 first_value, last_value, 
