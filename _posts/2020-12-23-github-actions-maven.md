@@ -103,6 +103,7 @@ Since I want to have JDK 11 and above ready projects, this workflow needs to be 
 To get this kind of **for each** loop, I use the matrix strategy of GitHub Actions. You provide a list of values, that the workflow iterates through or even processes in parallel.
 
 ```yaml
+{% raw %}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -118,9 +119,10 @@ jobs:
         java-version: ${{ matrix.java }} 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+{% endraw %}
 ```
 
-You see this new section **strategy**. There are our Java versions definied: 8 and 11. Within the steps we can now use the actual value using this kind of macro **`${{ matrix.java }}`**.
+You see this new section **strategy**. There are our Java versions definied: 8 and 11. Within the steps we can now use the actual value using this kind of macro **`{% raw %}${{ matrix.java }}{% endraw %}`**.
 
 # Conclusion
 
