@@ -86,7 +86,7 @@ Now the fun starts. Using an **order by** the window range within a partition is
 ```sql
 SELECT id, SUM( id ) OVER ( PARTITION BY numvalue ORDER BY id ) AS my_running_sum FROM mytable
 ```
-
+ 
 |id|numvalue|my_running_sum|
 |--|----:|-----:|
 |1|**2**|1|
