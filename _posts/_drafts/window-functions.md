@@ -103,7 +103,7 @@ window function|**order by** needed|description
 ---------------|-------------------|--------------------
 avg | no | 
 count | no, but possible | 
-
+ 
 
 avg
 count
