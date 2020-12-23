@@ -118,6 +118,9 @@ vorher / nachher in drei Datenbanken
 first_value, last_value, 
 
 # with a **frame** definition
+
+With the last examples it became somewhat clear, why the frame itself should be configurable as well.
+ 
 range definitions or frame definitions
 rows
 rows between unbounded preceding and unbounded following (alle)
