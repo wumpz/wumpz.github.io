@@ -106,11 +106,12 @@ row_number | yes | every row of the range of the partition is assigned with a se
 count | no, but possible | Number of rows of the range in our partition. Since for non null values this seems to do the same thing like **row_number**, but use the function with the best fitting name.
 sum | no, but possible | sum of numeric values of your partition in whole or a running sum
   
+## numbering rows
 
-
+row_number
 rank, dense_rank (equal values -> equal rank) (Rang von Dingen, siehe Siegertreppchen)
 
-Laufende Summen in drei Datenbanken
+## access to non actual row values
 
 lead, lag (expr, [ offset, [ defaultvalue ] ]) 
 vorher / nachher in drei Datenbanken
