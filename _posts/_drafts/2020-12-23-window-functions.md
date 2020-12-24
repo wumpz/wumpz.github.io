@@ -160,7 +160,7 @@ This **strange** behaviour of the **last_value** can easily explained by the use
 Now two methods that do not seem to use the standard range definition as a default. But  the complete partition data.
 
 window function|description
----------------|-------------------|--------------------
+---------------|------------------
 lag | Reads a value from a **previous row**. You define the relative offset. 
 lead | Reads a value from a **following row**. You define the relative offset.
 
