@@ -77,7 +77,7 @@ SELECT id, numvalue, MAX( id ) OVER ( PARTITION BY numvalue ) AS mymax FROM myta
 |4|1|5|
 |5|1|5|
 
-> Note: Without any further configuration the window function processes each row for every partition. Therefore the range is always to complete partition.
+> Note: Without any further configuration the window function processes each row for every partition. Therefore the range is always the complete partition.
 
 # with additional **order by**
 
@@ -155,9 +155,9 @@ from mytable
 |4|1|E|3|4
 |5|1|G|3|5
 
-This **strange** behaviour of the **last_value** can easily explained by the used range within the partition: **first row to actual row**.
+This **strange** behaviour of the **last_value** can be easily explained by the used range within the partition: **first row to actual row**.
 
-Now two methods that do not seem to use the standard range definition as a default. But  the complete partition data.
+Now two methods that do not seem to use the standard range definition as a default, but the complete partition.
 
 window function|description
 ---------------|------------------
@@ -185,7 +185,7 @@ order by id
 
 With the last examples it became somewhat clear, why the frame itself should be configurable as well. To define this range a quite complex sql construct is used. 
 
-You can e.g. here (https://www.postgresql.org/docs/12/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS) read Postgresql definition. 
+You can e.g. [here](https://www.postgresql.org/docs/12/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS) read Postgresql definition. 
 
 With this you can for instance configure your **sum** window function in a form, that it calculates the **sum** from the actual row and the two preceding rows and not from the complete partition. 
 
