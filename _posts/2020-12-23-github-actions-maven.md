@@ -23,7 +23,7 @@ So I have heard of GitHub Actions and wanted to give it a try. Since GitHub is a
 
 # The simple start 
 
-GitHub provides a very simple way to start. You could follow it here for maven: (https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-java-with-maven). 
+GitHub provides a very simple way to start. You could follow it here for maven: [here](https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-java-with-maven). 
 
 Or just use the **Action** menu of your GitHub repository and click **Setup this workflow** for **Java with Maven**. This will generate this workflow script for you:
 

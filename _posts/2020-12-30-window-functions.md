@@ -206,3 +206,7 @@ order by id
 |5|15|12
 
 In **sum_expr** is the normal complete partition **sum** result. In **sum_expr_with_range** there is the sum from the actual rows value the the two values before. For **id = 4** this calculates **2 + 3 + 4 = 9**.
+
+# Conclusion
+
+Window Functions is a very neat tool in the SQL developers toolset. Use it, try it and then decide for concrete problems, if its the right way to go.
