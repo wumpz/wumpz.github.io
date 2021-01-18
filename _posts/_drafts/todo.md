@@ -13,3 +13,6 @@ This is a simple document to somehow collect the themes to write about:
   * block Auswertung JSqlParser vorher notwendig
   * openCypher ist eine Implementierung
   * JSqlParser -> openCypher
+
+* streaming group by
+
