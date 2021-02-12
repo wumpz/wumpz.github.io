@@ -17,5 +17,3 @@ This is a simple document to somehow collect the themes to write about:
 * streaming group by
 
 * microprofile rest client
-
-* simple git-lfs client with microprofile
