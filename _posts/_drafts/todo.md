@@ -17,3 +17,5 @@ This is a simple document to somehow collect the themes to write about:
 * streaming group by
 
 * microprofile rest client
+
+* menu with extra buttons layout (refer to older StackOverflow question)
