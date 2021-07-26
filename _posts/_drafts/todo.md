@@ -19,3 +19,5 @@ This is a simple document to somehow collect the themes to write about:
 * microprofile rest client
 
 * menu with extra buttons layout (refer to older StackOverflow question)
+
+* -Djava.locale.providers=COMPAT,CLDR try to explain this strange jeps changes 
