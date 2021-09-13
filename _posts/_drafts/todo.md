@@ -21,3 +21,8 @@ This is a simple document to somehow collect the themes to write about:
 * menu with extra buttons layout (refer to older StackOverflow question)
 
 * -Djava.locale.providers=COMPAT,CLDR try to explain this strange jeps changes 
+
+* Nexus 3 configuration for maven
+  * Cleanup maven
+    * remove cleaned up artifacts
+    * clean snapshot multiple versions
