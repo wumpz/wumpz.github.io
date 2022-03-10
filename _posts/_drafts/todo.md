@@ -98,7 +98,7 @@ This is a simple document to somehow collect the themes to write about:
                 </dependencies>
             </plugin>
 
-      ```  * JSqlParser -> openCypher
+      ``` 
 
 * streaming group by
 
