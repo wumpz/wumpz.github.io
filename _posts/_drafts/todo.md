@@ -112,3 +112,41 @@ This is a simple document to somehow collect the themes to write about:
   * Cleanup maven
     * remove cleaned up artifacts
     * clean snapshot multiple versions
+
+* UmlDoclet for JavaDoc
+  * easy integration (maven central available)
+  * without GraphViz installation (pure Java solution of PlantUML)
+
+```
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <!-- *START* UML generation -->
+                    <doclet>nl.talsmasoftware.umldoclet.UMLDoclet</doclet>
+                    <docletArtifact>
+                        <groupId>nl.talsmasoftware</groupId>
+                        <artifactId>umldoclet</artifactId>
+                        <version>2.0.15</version>
+                    </docletArtifact>
+                    <additionalOptions>
+                        <additionalOption >--create-puml-files</additionalOption>
+                        <additionalOption >--uml-custom-directive='!pragma layout smetana'</additionalOption>   <!-- here happens the magic -->
+                    <!--<additionalOption>...</additionalOption>-->
+                    </additionalOptions>
+                    <!-- *END* UML generation -->
+                    <useStandardDocletOptions>true</useStandardDocletOptions>
+                    <maxmemory>800m</maxmemory>
+                    <doclint>none</doclint>				
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+```
