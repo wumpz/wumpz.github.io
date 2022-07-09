@@ -34,7 +34,8 @@ This is a simple document to somehow collect the themes to write about:
             <groupId>com.github.caciocavallosilano</groupId>
             <artifactId>cacio-tta</artifactId>
             <scope>test</scope>
-            <version>1.11</version>
+            <version>1.11</version>  <!-- java 11 -->
+            <version>1.17</version>  <!-- java 17 -->
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
