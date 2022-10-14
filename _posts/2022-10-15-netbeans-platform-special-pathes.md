@@ -1,5 +1,5 @@
 ---
-title:  "Netbeans V12.x - Platform - Special Pathes"
+title:  "Netbeans V14.x - Platform - Special Pathes"
 categories: [netbeans platform]
 tags: [netbeans platform, pathes]
 classes: wide
@@ -9,11 +9,18 @@ classes: wide
 
 This is a small hint of mine. For those special pathes Netbeans comes with the class `Places`. Here you get the user dir, the cache dir and more.
 
-* org.netbeans.modules: Pathes: user dir, ...
-   Places. ...
+Here two examples: 
+
+* User directory: `Places.getUserDirectory()`
+* Cache directory: `Places.getCacheDirectory()`
+     
 
 This artifact has to be installed.
 
 ```xml
-
+<dependency>
+   <groupId>org.netbeans.api</groupId>
+   <artifactId>org-openide-modules</artifactId>
+   <version>RELEASE140</version>
+</dependency>
 ```
