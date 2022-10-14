@@ -5,7 +5,7 @@ tags: [netbeans platform, notify]
 classes: wide
 ---
 
-# How to find Netbeans Platform special pathes
+# Cusomize Notify Descriptor for Netbeans Platform Applications
 
 ```
   String selectedValue = (String)DialogDisplayer.getDefault().notify(
