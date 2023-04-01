@@ -5,8 +5,6 @@ tags: [java, Netbeans, Node]
 classes: wide
 ---
 
-# Netbeans Platform Node Properties
-
 The normal way to construct properties for a node lies in the usage of `PropertySupport` or its tool classes. So to construct a read write property you have to do something like:
 
 ```java
