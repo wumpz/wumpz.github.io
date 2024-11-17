@@ -5,7 +5,7 @@ tags: [netbeans platform, notify]
 classes: wide
 ---
 
-# Cusomize Notify Descriptor for Netbeans Platform Applications
+# Customize Notify Descriptor for Netbeans Platform Applications
 
 ```
   String selectedValue = (String)DialogDisplayer.getDefault().notify(

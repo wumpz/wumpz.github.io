@@ -104,7 +104,7 @@ This is a simple document to somehow collect the themes to write about:
   * easy integration (maven central available)
   * without GraphViz installation (pure Java solution of PlantUML)
 
-```
+```xml
 <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -136,4 +136,62 @@ This is a simple document to somehow collect the themes to write about:
                     </execution>
                 </executions>
             </plugin>
+```
+
+* using maven build cache extension
+  * together with sonar
+  * with deploy
+```xml
+<extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/EXTENSIONS/1.0.0 http://maven.apache.org/xsd/core-extensions-1.0.0.xsd">
+
+    <extension>
+        <groupId>org.apache.maven.extensions</groupId>
+        <artifactId>maven-build-cache-extension</artifactId>
+        <version>1.2.0</version>
+    </extension>
+
+</extensions>
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<cache xmlns="http://maven.apache.org/BUILD-CACHE-CONFIG/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://maven.apache.org/BUILD-CACHE-CONFIG/1.0.0 https://maven.apache.org/xsd/build-cache-config-1.0.0.xsd">
+    <configuration>
+        <attachedOutputs>
+					<dirNames>
+						<dirName>classes</dirName>
+						<dirName>test-classes</dirName>
+						<dirName glob="jacoco.xml"></dirName>
+						<dirName>surefire-reports</dirName>
+					</dirNames>
+				</attachedOutputs>
+				<local>
+					<maxBuildsCached>5</maxBuildsCached>
+				</local>
+				<!-- 
+				Since deployment with new versions needs to be done.
+				This should only be needed for GM Box build
+				--> 
+				<projectVersioning calculateProjectVersionChecksum="true" />
+    </configuration>
+		<executionControl>
+        <reconcile>
+            <plugins>
+							  <!-- 
+								this configuration ensures rebuilding if cache was build with tests skipped by command line options 
+								--> 
+                <plugin artifactId="maven-surefire-plugin" goal="test">
+                    <reconciles>
+                        <reconcile propertyName="skip" skipValue="true"/>
+                        <reconcile propertyName="skipExec" skipValue="true"/>
+                        <reconcile propertyName="skipTests" skipValue="true"/>
+                        <reconcile propertyName="testFailureIgnore" skipValue="true"/>
+                    </reconciles>
+                </plugin>
+            </plugins>
+        </reconcile>
+    </executionControl>
+</cache>
 ```
