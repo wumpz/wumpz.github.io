@@ -5,8 +5,6 @@ tags: [maven, mirror, snapshot]
 classes: wide
 ---
 
-# Apache Maven mirror settings
-
 Using maven all artifacts are searched first in your local repository then at maven central, or which other repository is defined in your **pom.xml**.
 
 This is a valid configuration if you are developing for your own. But if you have a team that uses the same artifacts and sharing new versions of artifacts of your development an additional caching instance is very interesting.
