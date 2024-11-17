@@ -25,7 +25,7 @@ All artifacts needed to be downloaded once cached in nexus and from this time on
 Using this wildcard is needed to route all external requests through Sonatype Nexus.
 
 **Note:** This configuration does not allow SNAPSHOT artifacts to be externally requested. In most of the cases this should be not needed. However the commented part in the example settings file solves this problem as well.
-{: .notice-info }
+{: .notice--info}
 
 Here the complete configuration
 
