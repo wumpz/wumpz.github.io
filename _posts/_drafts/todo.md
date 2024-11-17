@@ -14,20 +14,6 @@ This is a simple document to somehow collect the themes to write about:
   * openCypher ist eine Implementierung
   * JSqlParser -> openCypher
 
-* Java 11 Upgrade
-  * JAXB
-        ```<dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.4.0-b180830.0359</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>2.4.0-b180830.0438</version>
-            <scope>test</scope>
-        </dependency>
-          ```
   * Headless Swingtests using CacioCavallo (there is a Java 11 compatible fork at github)
        ```
        <dependency>
