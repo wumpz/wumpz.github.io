@@ -49,7 +49,8 @@ Without further explanations here a complete maven javadoc plugin configuration 
 </plugin>
 ```
 
-**WARNING**: Versions previous of 2.2.1 of UMLDoclet have a problem if javadoc plugin uses the configuration `<verbose>true</verbose>`. Then a problematic exception is thrown. {: .notice--warning}
+**Warning**: Versions previous of 2.2.1 of UMLDoclet have a problem if javadoc plugin uses the configuration `<verbose>true</verbose>`. Then a problematic exception is thrown. 
+{: .notice--warning}
 
 
 Using `--create-puml` as UMLDoclet configuration it creates PlantUML files for further use, maybe write some additional source code documentation. 
