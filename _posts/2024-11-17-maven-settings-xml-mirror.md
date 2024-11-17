@@ -24,8 +24,8 @@ All artifacts needed to be downloaded once cached in nexus and from this time on
 
 Using this wildcard is needed to route all external requests through Sonatype Nexus.
 
- > [!NOTE]
- > This configuration does not allow SNAPSHOT artifacts to be externally requested. In most of the cases this should be not needed. However the commented part in the example settings file solves this problem as well.
+**Note:** This configuration does not allow SNAPSHOT artifacts to be externally requested. In most of the cases this should be not needed. However the commented part in the example settings file solves this problem as well.
+{: .notice-info }
 
 Here the complete configuration
 
@@ -66,5 +66,5 @@ Here the complete configuration
 </settings>
 ```
 
-> [!NOTE]
-> If Nexus is running, you can deploy your generated artifacts into it to share those with your team.
+**Note**: If Nexus is running, you can deploy your generated artifacts into it to share those with your team.
+{: .notice--info}
