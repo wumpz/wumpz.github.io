@@ -5,7 +5,7 @@ tags: [java, maven, cache]
 classes: wide
 ---
 
-This tutorial will give some informations on (build cache)[https://maven.apache.org/extensions/maven-build-cache-extension/] for Apache Maven. 
+This tutorial will give some informations on [build cache](https://maven.apache.org/extensions/maven-build-cache-extension/) for Apache Maven. 
 
 To activate the build cache you need some Maven version 3.9.x and above. Then in your project there must be a **.mvn** directory and in there then **extension.xml** file to load the cache extension. Those first steps are very good documented under [Getting Started](https://maven.apache.org/extensions/maven-build-cache-extension/getting-started.html).
 
@@ -26,7 +26,7 @@ To activate the build cache you need some Maven version 3.9.x and above. Then in
 
 Now the cache is activated and will work for your builds. However a bit of finetuning is often needed. 
 
-On very usefull maven build parameter is `-Dmaven.build.cache.skipCache=true` which skips reading from the cache but writing to it after a complete build. Sometimes there are unwanted situations cached, which makes problems afterwards. 
+One very usefull maven build parameter is `-Dmaven.build.cache.skipCache=true` which skips reading from the cache but writing to it after a complete build. Sometimes there are unwanted situations cached, which makes problems afterwards. 
 
 When the cache plugin prevents some plugins from running, it tries to rebuild some parts of the target directory. There you need often more than the standard configuration which only rebuilds the generated jar files. 
 
