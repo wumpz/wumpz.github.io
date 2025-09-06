@@ -1,6 +1,7 @@
 
 
 This is a simple document to somehow collect the themes to write about:
+* SnakeYaml ouput without tags, Json and stuff
 
 * regexp backtracking (performance)
 
@@ -16,7 +17,7 @@ This is a simple document to somehow collect the themes to write about:
   * openCypher ist eine Implementierung
   * JSqlParser -> openCypher
 
-  * Headless Swingtests using CacioCavallo (there is a Java 11 compatible fork at github)
+* Headless Swingtests using CacioCavallo (there is a Java 11 compatible fork at github)
        ```
        <dependency>
             <groupId>com.github.caciocavallosilano</groupId>
@@ -37,7 +38,7 @@ This is a simple document to somehow collect the themes to write about:
         @Category(com.github.caciocavallosilano.cacio.ctc.junit.CacioAssertJRunner.class)
         @RunWith(CacioAssertJRunner.class)
         ```
-  * Hyperjaxb3 
+* Hyperjaxb3 
       ```
       <plugin>
                 <groupId>org.patrodyne.jvnet</groupId>
