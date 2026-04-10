@@ -21,6 +21,7 @@ This is a simple document to somehow collect the themes to write about:
   * JSqlParser -> openCypher
 
 * Hyperjaxb3 
+    * https://github.com/patrodyne/hisrc-hyperjaxb
       ```
       <plugin>
                 <groupId>org.patrodyne.jvnet</groupId>
