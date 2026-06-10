@@ -2,6 +2,8 @@
 
 This is a simple document to somehow collect the themes to write about:
 
+* API improvments: regexp Matcher.replaceAll with lambda without this while construct
+
 * git worktree (support in ides)
 
 * SnakeYaml ouput without tags, Json and stuff
